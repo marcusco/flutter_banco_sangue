@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_banco_sangue/screen/percentual_obesos_homens_mulhres.dart';
-import 'package:flutter_banco_sangue/screen/possiveis_doadores_tipo_sanguineo.dart';
+import 'package:flutter_banco_sangue/screen/percentual_obesos_por_sexo.dart';
+import 'package:flutter_banco_sangue/screen/quantidade_doadores_tipo_sanguineo.dart';
 
 import 'DoadoresPorEstado.dart';
 import 'imc_medio_faixa_idade.dart';
@@ -29,21 +29,19 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.accessibility_outlined),
             title: Text('Doadores por estado'),
-            onTap: () =>
-                {
-                  Navigator.of(context).pop(),
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => DoadoresPorEstado()),
-                  )
-                },
+            onTap: () => {
+              //Navigator.of(context).pop(),
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DoadoresPorEstado()),
+              )
+            },
           ),
           ListTile(
             leading: Icon(Icons.account_circle),
             title: Text('IMC médio em cada faixa de idade'),
-            onTap: () =>
-            {
-              Navigator.of(context).pop(),
+            onTap: () => {
+              //Navigator.of(context).pop(),
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => ImcMedioFaixaIdade()),
@@ -53,36 +51,37 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.adb_sharp),
             title: Text('Percentual de obesos entre os homens e mulheres'),
-            onTap: () =>
-            {
-              Navigator.of(context).pop(),
+            onTap: () => {
+              //Navigator.of(context).pop(),
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => PercentualObesosHomensMulhres()),
+                MaterialPageRoute(
+                    builder: (context) => PercentualObesosPorSexo()),
               )
             },
           ),
           ListTile(
             leading: Icon(Icons.border_color),
             title: Text('Média de idade para cada tipo sanguíneo'),
-            onTap: () =>
-            {
-              Navigator.of(context).pop(),
+            onTap: () => {
+              //Navigator.of(context).pop(),
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MediaIdadeTipoSanguineo()),
+                MaterialPageRoute(
+                    builder: (context) => MediaIdadeTipoSanguineo()),
               )
             },
           ),
           ListTile(
             leading: Icon(Icons.abc_outlined),
-            title: Text('Possíveis doadores para cada tipo sanguíneo receptor'),
-            onTap: () =>
-            {
-              Navigator.of(context).pop(),
+            title:
+                Text('Quantidade doadores para cada tipo sanguíneo receptor'),
+            onTap: () => {
+              //Navigator.of(context).pop(),
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => PossiveisDoadoresTipoSanguineo()),
+                MaterialPageRoute(
+                    builder: (context) => QuantidadeDoadoresTipoSanguineo()),
               )
             },
           ),

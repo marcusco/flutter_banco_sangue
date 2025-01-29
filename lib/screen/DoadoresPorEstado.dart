@@ -11,7 +11,11 @@ class DoadoresPorEstado extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Doadores por estado'),
+        title: Text('Doadores por estado', style: TextStyle(
+          fontSize: 22,
+          color: Colors.red,
+          fontWeight: FontWeight.w600,
+        ),),
 
     ),
       body: Container(
@@ -30,9 +34,7 @@ class DoadoresPorEstado extends StatelessWidget {
            return ListView.builder(
              itemCount: snapshot.data!.length,
              itemBuilder: (context, index) {
-               return Card(
-                 color: Colors.deepOrange,
-                   child: buildText(snapshot.data![index]));
+               return buildText(snapshot.data![index]);
              },
            );
          } else if (snapshot.connectionState == ConnectionState.waiting) {
@@ -46,15 +48,32 @@ class DoadoresPorEstado extends StatelessWidget {
    }
 
    Widget buildText(DoadoresPorEstadoDTO value){
-     return Text(
-       'Doadores por estado: ${value.estado} quantidade: ${value.quantidade}' ?? "Sem nome",
-       style: const TextStyle(
-         fontSize: 18,
-         color: Colors.white,
-         fontWeight: FontWeight.w600,
-         backgroundColor: Colors.deepOrange
+     return Card(
+       child: Padding(
+         padding: const EdgeInsets.all(8.0),
+         child: Column(
+           children: [
+             Text(
+               'Doadores por estado: ${value.estado} ' ?? "Sem nome",
+               style: const TextStyle(
+                 fontSize: 18,
+                 color: Colors.redAccent,
+                 fontWeight: FontWeight.w600,
+               ),
+               textAlign: TextAlign.center,
+             ),
+             Text(
+               'Quantidade: ${value.quantidade}' ?? "Sem nome",
+               style: const TextStyle(
+                 fontSize: 18,
+                 color: Colors.redAccent,
+                 fontWeight: FontWeight.w600,
+               ),
+               textAlign: TextAlign.center,
+             ),
+           ],
+         ),
        ),
-       textAlign: TextAlign.justify,
      );
    }
 }

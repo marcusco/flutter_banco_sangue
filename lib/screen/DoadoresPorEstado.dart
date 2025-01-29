@@ -3,15 +3,21 @@ import 'package:flutter_banco_sangue/service/DoadorService.dart';
 
 import '../dto/DoadoresPorEstadoDTO.dart';
 
-class Estatisticas extends StatelessWidget {
-   Estatisticas({Key? key}) : super(key: key);
+class DoadoresPorEstado extends StatelessWidget {
+  DoadoresPorEstado({Key? key}) : super(key: key);
 
   DoadorService doadorService = new DoadorService();
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: buidList()
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Doadores por estado'),
+
+    ),
+      body: Container(
+        color: Colors.white,
+        child: buidList()
+      ),
     );
   }
 

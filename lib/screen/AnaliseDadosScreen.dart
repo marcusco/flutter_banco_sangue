@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_banco_sangue/screen/nav_drawer.dart';
 
 import 'package:flutter_banco_sangue/service/DoadorService.dart';
 
 import '../domain/Doador.dart';
-import 'Estatisticas.dart';
+import 'DoadoresPorEstado.dart';
 
 class AnaliseDadosScreen extends StatelessWidget {
   AnaliseDadosScreen({super.key});
@@ -13,23 +14,12 @@ class AnaliseDadosScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavDrawer(),
       appBar: AppBar(
         title: Text('Banco de Sangue'),
-        actions: [buildEstatistica(context)],
+
       ),
       body: Container(child: buidList()),
-    );
-  }
-
-  Widget buildEstatistica(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () => {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Estatisticas()),
-        )
-      },
-      child: Text("Estatisticas"),
     );
   }
 

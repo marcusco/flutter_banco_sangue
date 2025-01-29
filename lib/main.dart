@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_banco_sangue/screen/TipoSanguineoScreen.dart';
+import 'package:flutter_banco_sangue/screen/AnaliseDadosScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,12 +12,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Banco de Sangue',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
         useMaterial3: true,
       ),
-      home: const TipoSanguineoScreen(),
+      home: AnaliseDadosScreen(),
     );
   }
 }

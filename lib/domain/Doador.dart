@@ -1,12 +1,15 @@
 import 'dart:ffi';
+import 'package:intl/intl.dart';
 
 class Doador {
-  final Long? id;
-  final String? nome;
-  final String? cpf;
-  final DateTime? dataNascimento;
-  final String? sexo;
-  final String? mae;
+  //
+  final int? id;
+  final String nome;
+  final String cpf;
+  final String? rg;
+  final DateTime dataNascimento;
+  final String sexo;
+  final String mae;
   final String? pai;
   final String? email;
   final String? cep;
@@ -16,15 +19,18 @@ class Doador {
   final String? estado;
   final String? telefoneFixo;
   final String? celular;
-  final Long? tipoSanguineo;
+  final String? tipoSanguineo;
+  final double? altura;
+  final int? peso;
 
   Doador(
       {this.id,
-      this.nome,
-      this.cpf,
-      this.dataNascimento,
-      this.sexo,
-      this.mae,
+      required this.nome,
+      required this.cpf,
+      this.rg,
+      required this.dataNascimento,
+      required this.sexo,
+      required this.mae,
       this.pai,
       this.email,
       this.cep,
@@ -34,14 +40,23 @@ class Doador {
       this.estado,
       this.telefoneFixo,
       this.celular,
-      this.tipoSanguineo});
+      this.tipoSanguineo,
+      this.peso,
+      this.altura});
 
   factory Doador.fromJson(Map<String, dynamic> json) {
+    late DateFormat fm;
+    if (json['data_nasc'].toString().contains('/')) {
+      fm = DateFormat('dd/MM/yyyy');
+    } else {
+      fm = DateFormat('dd-MM-yyyy');
+    }
     return Doador(
         id: json['id'],
         nome: json['nome'],
         cpf: json['cpf'],
-        dataNascimento: json['dataNascimento'],
+        rg: json['rg'],
+        dataNascimento: fm.parse(json['data_nasc']),
         sexo: json['sexo'],
         mae: json['mae'],
         pai: json['pai'],
@@ -51,17 +66,20 @@ class Doador {
         bairro: json['bairro'],
         cidade: json['cidade'],
         estado: json['estado'],
-        telefoneFixo: json['telefoneFixo'],
+        telefoneFixo: json['telefone_fixo'],
         celular: json['celular'],
-        tipoSanguineo: json['tipoSanguineo']);
+        tipoSanguineo: json['tipo_sanguineo'],
+        altura: json['altura'],
+        peso: json['peso']);
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    var data = new Map<String, dynamic>();
     data['id'] = id;
     data['nome'] = nome;
     data['cpf'] = cpf;
-    data['dataNascimento'] = dataNascimento;
+    data['rg'] = rg;
+    data['data_nasc'] = DateFormat('yyyy-MM-dd').format(dataNascimento);
     data['sexo'] = sexo;
     data['mae'] = mae;
     data['pai'] = pai;
@@ -71,9 +89,11 @@ class Doador {
     data['bairro'] = bairro;
     data['cidade'] = cidade;
     data['estado'] = estado;
-    data['telefoneFixo'] = telefoneFixo;
+    data['telefone_fixo'] = telefoneFixo;
     data['celular'] = celular;
-    data['tipoSanguineo'] = tipoSanguineo;
+    data['tipo_sanguineo'] = tipoSanguineo;
+    data['peso'] = peso;
+    data['altura'] = altura;
 
     return data;
   }

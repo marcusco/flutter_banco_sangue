@@ -1,9 +1,9 @@
 import 'dart:convert';
-
+import 'package:http/http.dart' as http;
 import 'package:flutter_banco_sangue/api/ApiBase.dart';
 import 'package:flutter_banco_sangue/domain/TipoSanguineo.dart';
 
-import 'package:http/http.dart' as http;
+
 
 class TipoSanguineoApi extends ApiBase {
   static const url = 'api/tipo-sanguineo';

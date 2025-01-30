@@ -5,6 +5,7 @@ import 'package:flutter_banco_sangue/api/ApiBase.dart';
 
 import '../domain/Doador.dart';
 import '../dto/DoadoresPorEstadoDTO.dart';
+import '../dto/ImcFaixaPorIdadeDTO.dart';
 import '../dto/MediaIdadeTipoSanguineoDTO.dart';
 import '../dto/ObesosPorSexoDTO.dart';
 import '../dto/QuantidadeDoadoresPorTipoSanguineoDTO.dart';
@@ -124,6 +125,23 @@ class DoadorApi extends ApiBase {
     } on Exception catch (exception) {
       print(exception.toString());
       throw Exception('Erro ao fazer a requisição: ${exception}');
+    }
+  }
+
+  Future<List<ImcFaixaPorIdadeDTO>> imcMedioPorFaixaIdade() async {
+    try {
+      final response = await http.get(Uri.parse(ApiBase.url_base + url_imc +'/por-faixa-idade'),
+          headers: queryParameters);
+      if (response.statusCode == 200) {
+        Iterable l = jsonDecode(response.body);
+        List<ImcFaixaPorIdadeDTO> doadores =
+        List<ImcFaixaPorIdadeDTO>.from(l.map((model) => ImcFaixaPorIdadeDTO.fromJson(model)));
+        return doadores;
+      } else {
+        throw Exception('Erro ao salvar doadores.');
+      }
+    } on Exception catch (exception) {
+      throw Exception('Erro ao fazer a requisição: $exception');
     }
   }
 }

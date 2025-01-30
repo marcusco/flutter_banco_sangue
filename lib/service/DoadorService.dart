@@ -1,13 +1,11 @@
 import 'dart:convert';
-import 'dart:ffi';
 
-import 'package:flutter/animation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_banco_sangue/api/DoadorApi.dart';
-import 'package:flutter_banco_sangue/screen/quantidade_doadores_tipo_sanguineo.dart';
 
 import '../domain/Doador.dart';
 import '../dto/DoadoresPorEstadoDTO.dart';
+import '../dto/ImcFaixaPorIdadeDTO.dart';
 import '../dto/MediaIdadeTipoSanguineoDTO.dart';
 import '../dto/ObesosPorSexoDTO.dart';
 import '../dto/QuantidadeDoadoresPorTipoSanguineoDTO.dart';
@@ -42,5 +40,9 @@ class DoadorService {
 
   Future<ObesosPorSexoDTO> percentualObesosPorSexo() async {
     return doadorApi.percentualObesosPorSexo();
+  }
+
+  Future<List<ImcFaixaPorIdadeDTO>> imcMedioPorFaixaIdade() async {
+    return doadorApi.imcMedioPorFaixaIdade();
   }
 }

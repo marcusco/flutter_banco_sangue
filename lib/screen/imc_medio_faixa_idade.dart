@@ -64,7 +64,7 @@ class ImcMedioFaixaIdade extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             Text(
-              'Soma IMC: ${value.mediaImc.toStringAsFixed(2)}',
+              'Média IMC: ${value.mediaImc.toStringAsFixed(2)}',
               style: const TextStyle(
                 fontSize: 18,
                 color: Colors.redAccent,
